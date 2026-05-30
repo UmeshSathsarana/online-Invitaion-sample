@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>නෙර්ත අභිමන් 2026 - ආරාධනා!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;700;800&family=Noto+Serif+Sinhala:wght@300;400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Serif Sinhala', 'Abhaya Libre', serif;
+            background-color: #0b0101;
+            background-image: 
+                url("image_665721.jpg"), 
+                radial-gradient(circle at center, #3a0505 0%, #0d0101 100%);
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: 900px, cover;
+            background-attachment: fixed;
+            color: #f5f0e1;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* ප්‍රධාන ආරාධනා පත්‍රයේ රාමුව */
+        .wrapper {
+            max-width: 800px;
+            margin: 120px auto 40px auto;
+            background: linear-gradient(135deg, rgba(26, 2, 2, 0.95) 0%, rgba(54, 6, 6, 0.95) 50%, rgba(26, 2, 2, 0.95) 100%);
+            border: 4px solid #d4af37;
+            outline: 2px solid #d4af37;
+            outline-offset: -14px;
+            padding: 60px 40px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+            position: relative;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* කොන් වල සාම්ප්‍රදායික හැඩතල */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #d4af37;
+        }
+        .top-left { top: 25px; left: 25px; border-right: none; border-bottom: none; }
+        .top-right { top: 25px; right: 25px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 25px; left: 25px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 25px; right: 25px; border-left: none; border-top: none; }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-bg-mandala {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px; /* ලෝගෝ එක ලොකු කරපු නිසා පසුබිම් මංඩල එකත් පොඩ්ඩක් ලොකු කළා */
+            height: 320px;
+            background-image: url("image_665721.jpg");
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+            animation: rotateDisk 20s linear infinite;
+        }
+
+        /* 👑 ලෝගෝ එක තවත් කැපිලා පෙනෙන්න ලොකු කළා */
+        .logo-container {
+            width: 190px; /* 130px සිට 190px දක්වා ලොකු කළා */
+            height: auto;
+            margin: 0 auto 25px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.8));
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 3.2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1);
+            margin-bottom: 5px;
+            text-align: center;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sub-title {
+            color: #ffffff;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(212,175,55,0.4);
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 4px rgba(0,0,0,1);
+        }
+
+        /* ප්‍රධාන තනි ඡායාරූපය */
+        .main-image-container {
+            width: 100%;
+            /* max-height: 400px; */
+            border: 1px solid #d4af37;
+            overflow: hidden;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        .main-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+             /* object-fit: cover;  - ඔබට අවශ්‍ය පරිදි මෙය "contain" හෝ "cover" ලෙස සකස් කළ හැක */
+        }
+
+        /* ආරාධනා ජේදය */
+        .intro-text {
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 2;
+            margin-bottom: 40px;
+            color: #f2e7cd;
+            padding: 0 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+
+        /* 🎪 Slideshow Container (පිරිසිදු පෙනුමක් සඳහා උස 300px දක්වා අඩු කළා) */
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: 30px 0;
+            border: 2px solid #d4af37;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            height: 300px; /* 400px සිට 300px දක්වා පිළිවෙළට සකස් කළා */
+        }
+
+        .mySlides {
+            display: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ඊතල බටන් */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px;
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 22px;
+            transition: 0.3s ease;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 0 4px 4px 0;
+            z-index: 10;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #d4af37;
+            color: #1a0202;
+        }
+
+        /* යටින් තියෙන Dots */
+        .dot-container {
+            text-align: center;
+            margin-top: -25px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            border: 1px solid #d4af37;
+        }
+
+        .active, .dot:hover {
+            background-color: #d4af37;
+        }
+
+        .fade {
+            animation: fadeEffect 1s;
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0.4; } 
+            to { opacity: 1; }
+        }
+
+        /* උත්සව විස්තර පෙට්ටිය */
+        .details-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 1px solid #d4af37;
+            border-bottom: 1px solid #d4af37;
+            padding: 25px 10px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .info-node {
+            flex: 1;
+            min-width: 220px;
+            margin: 15px;
+        }
+
+        .info-node svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+        }
+
+        .info-title {
+            color: #d4af37;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .guru-section {
+            text-align: center;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            color: #e2d9c5;
+            line-height: 1.8;
+        }
+
+        .guru-section strong {
+            color: #ffffff;
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .divider {
+            width: 60%;
+            height: 30px;
+            margin: 30px auto;
+            background-image: url("image_665721.jpg");
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37);
+        }
+        .divider::before { left: 0; }
+        .divider::after { right: 0; background: linear-gradient(to left, transparent, #d4af37); }
+
+        .actions {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #dfb742 0%, #b89025 100%);
+            color: #1a0202;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #ffebad;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #360505;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* 🎵 Music Player Button Style */
+        .music-control-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            background-image: url("image_665721.jpg");
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .music-control-btn::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .music-control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .music-control-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .music-playing {
+            animation: rotateDisk 6s linear infinite;
+        }
+
+        @keyframes rotateDisk {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 650px) {
+            body { background-size: 500px, cover; }
+            .wrapper { padding: 40px 20px; margin: 80px 15px 20px 15px; }
+            .logo-container { width: 140px; } /* Mobile එකේදීත් ලෝගෝ එක ගානට ලොකු කළා */
+            h1 { font-size: 2.4rem; }
+            .sub-title { font-size: 1.4rem; }
+            .slideshow-container { height: 200px; } /* Mobile එකේදී Slideshow උස තවත් ගැලපෙන සයිස් එකට හැදුවා */
+            .info-node { border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 15px; }
+            .info-node:last-child { border-bottom: none; }
+            .music-control-btn { bottom: 15px; right: 15px; width: 48px; height: 48px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="audio/magul-bera.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-control-btn" id="music-btn" title="Play/Pause Music">
+        <svg id="play-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </button>
+
+    <div class="wrapper">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="header-section">
+            <div class="header-bg-mandala"></div>
+
+            <div class="logo-container">
+                <img src="gold logo with transparent (1).png" alt="Logo">
+            </div>
+
+            <h1>ආරාධනා!</h1>
+            <div class="sub-title">නෙර්ත අභිමන් 2026</div>
+        </div>
+
+        <div class="main-image-container">
+            <img src="main.jpeg" alt="Nerta Abhiman Main Image">
+        </div>
+
+        <p class="intro-text">
+            හිස වෙස් තැබීමෙන් හා ශීර්ෂාභරණින් සැරසුන කුල කුමරු කුමරියන් දෙතිසකගේ නෘත්‍යාභිෂේකය වර්ණවත් කිරීමට ඔබට කෙරෙන සුහද ආරාධනාවයි මේ...
+        </p>
+
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="2.jpeg" alt="Gallery Image 1">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="3.jpeg" alt="Gallery Image 2">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="4.jpeg" alt="Gallery Image 3">
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        <div class="details-box">
+            <div class="info-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <div class="info-title">දිනය</div>
+                <div class="info-value">පොසොන් මස අටවන සඳුදින</div>
+                <div style="font-size: 0.9rem; color:#bfa276; margin-top: 3px;">(2026 ජූනි මස 8 වන දින)</div>
+            </div>
+            <div class="info-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <div class="info-title">වේලාව</div>
+                <div class="info-value">පෙ.ව. 9.00 සිට</div>
+            </div>
+            <div class="info-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div class="info-title">ස්ථානය</div>
+                <div class="info-value">ගඩලාදෙණීය රජ මහා විහාරය</div>
+            </div>
+        </div>
+
+        <div class="guru-section">
+            ප්‍රධාන නර්තනාචාර්ය උපදේශකත්වය:
+            <strong>නර්තන ආචාරිණී හේමා පියසීලී</strong>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="text-align: center; font-size: 1.1rem; color: #e5dac1; line-height: 1.8;">
+            <span style="color: #d4af37; font-weight: bold;">විමසීම්</span><br>
+            <strong>071 4927229 / 071 8520254</strong>
+        </div>
+
+        <div class="actions">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.853314918293!2d80.55343607476041!3d7.2575299927491725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae369d25e76adc5%3A0xc695c9a219c56f4d!2sGadaladeniya%20Raja%20maha%20viharaya!5e0!3m2!1sen!2slk!4v1780121659167!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                📍 විහාරස්ථානයේ පිහිටීම (Google Map)
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // --- 🎵 Audio Logic ---
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                    musicBtn.classList.add('music-playing');
+                }).catch(err => console.log("Autoplay blocked."));
+            } else {
+                music.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                musicBtn.classList.remove('music-playing');
+            }
+        }
+
+        musicBtn.addEventListener('click', toggleMusic);
+
+        document.addEventListener('click', function initialPlay() {
+            if (music.paused) {
+                music.play().then(() => {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                    musicBtn.classList.add('music-playing');
+                });
+            }
+            document.removeEventListener('click', initialPlay);
+        }, { once: true });
+
+
+        // --- 🎪 Slideshow Logic ---
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+
+        setInterval(() => {
+            plusSlides(1);
+        }, 2000);
+    </script>
+
+</body>
+</html>
